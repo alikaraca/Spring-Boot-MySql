@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+.w3-button {
+    width:auto;
+}
+</style>
+<meta charset="UTF-8">
+<title>Kullanıcı Düzenle</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/pop-up.css}" />
+</head>
+<body>
+     <div th:include="menu.html"></div>
+
+     <div class="w3-container w3-red w3-center" style="padding:128px 16px">
+         <h1 class="w3-jumbo">DÜZENLE</h1>
+        <table class="w3-table-all w3-centered">
+        <tr class="w3-red">
+            <th>Id</th>
+            <th>Ad</th>
+            <th>Email</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+        <tr class="w3-text-black" th:each="user: ${user}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.ad}"></td>
+            <td th:text="${user.email}"></td>
+            <td><a href="/ekle/1" th:href="@{/guncelle/__${user.id}__}" class="w3-button w3-round-xxlarge w3-blue" name="guncelle" type="w3-button" value="Güncelle" />Güncelle</td> 
+            <td><a th:href="${'/sil/'+user.id}" class="w3-button w3-round-xxlarge w3-red" type="w3-button" value="Sil" />Sil</td>
+        </tr>
+    </table>
+
+</div>
+        <button id="myBtn" >Popup Aç</button>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+             
+        </div>
+    </div>
+    	<footer class="w3-container w3-padding-64 w3-center w3-opacity">
+            <div class="w3-xlarge w3-padding-32">
+                <i class="fa fa-facebook-official w3-hover-opacity"></i>
+                <i class="fa fa-instagram w3-hover-opacity"></i>
+                <i class="fa fa-snapchat w3-hover-opacity"></i>
+                <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+                <i class="fa fa-twitter w3-hover-opacity"></i>
+                <i class="fa fa-linkedin w3-hover-opacity"></i>
+            </div>
+            <p>AliKaraca</p>
+        </footer>
+         
+    <script>
+        // Popup Al
+var modal = document.getElementById('myModal');
+
+// Kipi açan düğmeyi al
+var btn = document.getElementById("myBtn");
+
+// Kipi kapatan <span> öğesini edinin
+var span = document.getElementsByClassName("close")[0];
+
+// Kullanıcı düğmeyi tıklattığında
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// Kullanıcı <span> (x) düğmesini tıkladığında, popup
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// Kullanıcı modelden başka herhangi bir yeri tıklattıysa, onu kapatın.
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+    </script>
+
+</body>
+</html>

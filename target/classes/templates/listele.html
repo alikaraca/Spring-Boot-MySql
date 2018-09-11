@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Kullanıcı Listele</title>
+    <script th:src="@{/js/w3.js}"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+     <div th:include="menu.html"></div>
+
+     <div class="w3-container w3-red w3-center" style="padding:128px 16px">
+         <h1 class="w3-jumbo">Liste</h1>
+        <table id="tablo" class="w3-table-all w3-centered">
+        <tr class="w3-red">
+            <th onclick="w3.sortHTML('#tablo', '.item', 'td:nth-child(1)')" style="cursor:pointer">Id <i class="fa fa-caret-down"></i></th>
+            <th onclick="w3.sortHTML('#tablo', '.item', 'td:nth-child(2)')" style="cursor:pointer">Ad <i class="fa fa-caret-down"></i></th>
+            <th onclick="w3.sortHTML('#tablo', '.item', 'td:nth-child(3)')" style="cursor:pointer">Email <i class="fa fa-caret-down"></i></th>
+        </tr>
+        <tr class="item w3-text-black" th:each="user: ${user}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.ad}"></td>
+            <td th:text="${user.email}"></td>
+        </tr>
+    </table>
+
+</div>
+    	<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
+
+  <div class="w3-xlarge w3-padding-32">
+
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+
+ </div>
+
+ <p>AliKaraca</p>
+
+</footer>
+<script>
+$(document).ready(function(){
+  $(".facaret").on("", function(){
+    $(".btn").html('Dropdown <span class="caret"></span>');
+  });
+  $(".dropdown").on("show.bs.dropdown", function(){
+    $(".btn").html('Dropdown <span class="caret caret-up"></span>');
+  });
+});
+</script>
+</body>
+</html>

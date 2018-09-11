@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Güncelleme</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<style>
+		.center {
+    	    margin: auto;
+   		 	width: 65%;
+    		padding: 10px;
+		}
+	  </style>
+</head>
+<body>
+    <div th:include="menu.html"></div>
+    <header class="w3-container w3-red w3-center" style="padding:128px 16px">
+
+  		<h1 class="w3-margin w3-jumbo">GÜNCELLE</h1>
+
+  		<form th:action="@{/api/getir}" method="get" target="_blank">
+			<button class="btn btn-md btn-warning" type="Submit">Verileri JSON Formatında Getir</button>
+		</form>	
+			
+				<div class="center" >
+					
+				<form autocomplete="off" action="#" th:action="@{/guncelle}"
+					th:object="${user}" method="post" class="form-horizontal center"
+					role="form">
+					<div class="form-group">
+						<div class="center">
+						<input type="text" th:field="*{id}"  placeholder="Id"
+								class="form-control" />
+						<h4 th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Id Hatası</h4>
+						
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="center">
+						<input type="text" th:field="*{ad}" placeholder="Ad"
+								class="form-control" /> 
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="center">
+							<input type="email" th:field="*{email}" placeholder="Email"
+								class="form-control" /> <label
+								th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+								class="validation-message"></label>
+						</div>
+                    </div>	
+					<div class="form-group">
+						<div class="center">
+							<button type="submit" class="btn btn-primary btn-block">Güncelle</button>
+						</div>
+                    </div>
+                    <span th:utext="${successMessage}"></span>
+				</form>
+				</div>
+		
+
+
+	</header>
+	<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
+
+  <div class="w3-xlarge w3-padding-32">
+
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+
+ </div>
+
+ <p>AliKaraca</p>
+
+</footer>
+
+</body>
+</html>
